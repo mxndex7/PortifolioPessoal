@@ -286,7 +286,8 @@ document.querySelectorAll('.project-card').forEach(card => {
             gsap.to(this, {
                 y: 0,
                 duration: 0.4,
-                ease: 'power2.out'
+                ease: 'power2.out',
+                boxShadow: '0 0px 0px rgba(0,0,0,0)'
             });
         }
     });

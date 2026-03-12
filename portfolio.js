@@ -12,14 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-});
-
+const scrollTopBtn = document.getElementById('scrollTop');
 
 document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', (e) => {
@@ -34,25 +27,28 @@ document.querySelectorAll('.nav-link').forEach(link => {
     });
 });
 
+function onScroll() {
+    const scrollY = window.scrollY;
+    if (navbar) navbar.classList.toggle('scrolled', scrollY > 50);
+    if (scrollTopBtn) scrollTopBtn.classList.toggle('visible', scrollY > 500);
 
-window.addEventListener('scroll', () => {
     let current = '';
-    const sections = document.querySelectorAll('section');
-    
-    sections.forEach(section => {
+    document.querySelectorAll('section').forEach(section => {
         const sectionTop = section.offsetTop;
-        if (scrollY >= sectionTop - 200) {
-            current = section.getAttribute('id');
-        }
+        if (scrollY >= sectionTop - 200) current = section.getAttribute('id');
     });
 
     document.querySelectorAll('.nav-link').forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href').slice(1) === current) {
-            link.classList.add('active');
-        }
+        link.classList.toggle('active', link.getAttribute('href').slice(1) === current);
     });
-});
+
+    const heroGrid = document.querySelector('.hero-background-grid');
+    if (heroGrid) heroGrid.style.transform = `translateY(${scrollY * 0.5}px)`;
+
+    revealOnScroll();
+}
+
+window.addEventListener('scroll', onScroll);
 
 const typingText = document.querySelector('.typing-text');
 const phrases = ['Desenvolvedor Full Stack', 'UX/UI Designer', 'Técnico de Suporte'];
@@ -198,16 +194,6 @@ const carousel = {
     }
 };
 
-const scrollTopBtn = document.getElementById('scrollTop');
-
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 500) {
-        scrollTopBtn.classList.add('visible');
-    } else {
-        scrollTopBtn.classList.remove('visible');
-    }
-});
-
 scrollTopBtn.addEventListener('click', () => {
     if (typeof gsap !== 'undefined') {
         gsap.to(window, {
@@ -217,15 +203,6 @@ scrollTopBtn.addEventListener('click', () => {
         });
     } else {
         window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-});
-
-
-window.addEventListener('scroll', () => {
-    const heroGrid = document.querySelector('.hero-background-grid');
-    if (heroGrid) {
-        const scrolled = window.scrollY;
-        heroGrid.style.transform = `translateY(${scrolled * 0.5}px)`;
     }
 });
 
@@ -243,8 +220,6 @@ function revealOnScroll() {
         }
     });
 }
-
-window.addEventListener('scroll', revealOnScroll);
 
 
 document.querySelectorAll('.btn').forEach(btn => {

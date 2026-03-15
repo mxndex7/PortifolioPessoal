@@ -1,17 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
-
 :root {
     --primary: #ffffff;
-    --primary-dark: #e0e0e0;
-    --bg: #0a0a0a;
-    --bg-secondary: #161616;
-    --card-bg: rgba(14, 14, 14, 0.05);
-    --border: rgba(255, 255, 255, 0.1);
-    --border-light: rgba(255, 255, 255, 0.15);
+    --primary-dark: #ffffff;
+    --bg: #000000;
+    --bg-secondary: #000000;
+    --card-bg: rgba(255, 255, 255, 0);
+    --border: rgba(255, 255, 255, 0.027);
+    --border-light: rgba(255, 255, 255, 0.048);
     --text: #ffffff;
-    --text-dim: #b0b0b0;
-    --text-light: #808080;
-    --accent: #cccccc;
+    --text-dim: #ffffff;
+    --text-light: #ffffff;
+    --accent: #ffffff;
     --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -22,7 +20,7 @@
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Gotham', 'Helvetica Neue', Arial, sans-serif;
     background-color: var(--bg);
     color: var(--text);
     line-height: 1.6;
@@ -33,7 +31,7 @@ h1,
 h2,
 h3,
 .logo {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Gotham', 'Helvetica Neue', Arial, sans-serif;
 }
 
 .container {
@@ -57,7 +55,7 @@ h3,
 }
 
 .navbar.scrolled {
-    background: rgba(10, 10, 10, 0.9);
+    background: rgba(0, 0, 0, 0.9);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-light);
     padding: 1rem 0;
@@ -433,7 +431,7 @@ h3,
     position: relative;
     padding-top: 0;
     overflow: hidden;
-    background: linear-gradient(180deg, #0a0a0a 0%, #151515 100%);
+    background: linear-gradient(180deg, #000000 0%, #000000 100%);
 }
 
 .hero-background-grid {
